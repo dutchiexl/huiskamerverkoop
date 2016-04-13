@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>VisitingDay list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Day</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for visitingDay in visitingDays %}
+            <tr>
+                <td><a href="{{ path('visitingday_show', { 'id': visitingDay.id }) }}">{{ visitingDay.id }}</a></td>
+                <td>{% if visitingDay.day %}{{ visitingDay.day|date('Y-m-d') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('visitingday_show', { 'id': visitingDay.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('visitingday_edit', { 'id': visitingDay.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('visitingday_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

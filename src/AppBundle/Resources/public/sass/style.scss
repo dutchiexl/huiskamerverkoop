@@ -1,2 +1,29 @@
 @import 'variables';
 @import '../../../../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap';
+
+section.header {
+  background: url('/assets/img/bg.jpg') no-repeat center center;
+  background-size: cover;
+  height: 1000px;
+  width: 100%;
+}
+
+.content-block {
+  @include container-fixed;
+  .left {
+    @include make-xs-column(12);
+    @include make-sm-column(6);
+  }
+  .right {
+    @include make-xs-column(12);
+    @include make-sm-column(6);
+  }
+
+  .content {
+
+  }
+
+  .img {
+
+  }
+}

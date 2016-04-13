@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>VisitDayHour list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Time</th>
+                <th>Places</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for visitDayHour in visitDayHours %}
+            <tr>
+                <td><a href="{{ path('visitdayhour_show', { 'id': visitDayHour.id }) }}">{{ visitDayHour.id }}</a></td>
+                <td>{% if visitDayHour.time %}{{ visitDayHour.time|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ visitDayHour.places }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('visitdayhour_show', { 'id': visitDayHour.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('visitdayhour_edit', { 'id': visitDayHour.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('visitdayhour_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

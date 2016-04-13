@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>VisitDayHour</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ visitDayHour.id }}</td>
+            </tr>
+            <tr>
+                <th>Time</th>
+                <td>{% if visitDayHour.time %}{{ visitDayHour.time|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Places</th>
+                <td>{{ visitDayHour.places }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('visitdayhour_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('visitdayhour_edit', { 'id': visitDayHour.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

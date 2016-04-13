@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Interest list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for interest in interests %}
+            <tr>
+                <td><a href="{{ path('interest_show', { 'id': interest.id }) }}">{{ interest.id }}</a></td>
+                <td>{{ interest.name }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('interest_show', { 'id': interest.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('interest_edit', { 'id': interest.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('interest_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

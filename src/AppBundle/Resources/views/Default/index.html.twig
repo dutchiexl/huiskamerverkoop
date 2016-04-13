@@ -4,5 +4,21 @@
 {% endblock %}
 
 {% block body %}
-    test
+    <section class="content-block full form">
+        <div class="left content">
+            <h2>Schrijf je in</h2>
+            {{ form_start(subscribeForm) }}
+            {{ form_row(subscribeForm) }}
+            {{ form_end(subscribeForm) }}
+        </div>
+        <div class="right img">
+        </div>
+    </section>
+    <section class="content-block full question">
+        <div class="left content">
+            <h2>Heb je nog vragen ?</h2>
+        </div>
+        <div class="right img">
+        </div>
+    </section>
 {% endblock %}
