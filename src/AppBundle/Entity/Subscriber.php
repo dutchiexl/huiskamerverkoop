@@ -56,6 +56,8 @@ class Subscriber
     /**
      * @ORM\ManyToOne(targetEntity="VisitDayHour", inversedBy="subscribers")
      * @ORM\JoinTable(name="subscriber_visits")
+     *
+     * @Assert\NotBlank()
      */
     private $visit;
 

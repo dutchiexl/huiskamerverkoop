@@ -37,7 +37,6 @@ class SubscribeController extends Controller
         }
 
         return $this->render('visitdayhour/new.html.twig', array(
-            'visitDayHour' => $visitDayHour,
             'form' => $form->createView(),
         ));
     }

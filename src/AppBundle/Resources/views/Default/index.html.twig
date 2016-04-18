@@ -21,4 +21,10 @@
         <div class="right img">
         </div>
     </section>
+
+    {% for day in days %}
+        {% for hour in day.visitDayHours %}
+            <input type="radio" name="{{ day }}" value="{{ hour.id }}"> {{ hour }}<br>
+        {% endfor %}
+    {% endfor %}
 {% endblock %}

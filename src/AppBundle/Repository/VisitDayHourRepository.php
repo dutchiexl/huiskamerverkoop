@@ -1,6 +1,7 @@
 <?php
 
 namespace AppBundle\Repository;
+use Doctrine\Common\Collections\Criteria;
 
 /**
  * VisitDayHourRepository
@@ -10,4 +11,14 @@ namespace AppBundle\Repository;
  */
 class VisitDayHourRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getAvailableVisits(){
+        $qb = $this->createQueryBuilder('v')
+            ->select('v')
+            ->join('v.subscribers', 's')
+            ->groupBy('v.id')
+            ->having('(v.places - count(v.id)) > 0')
+            ->getQuery();
+        return $qb->getResult();
+
+    }
 }

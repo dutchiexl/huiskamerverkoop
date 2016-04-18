@@ -29,7 +29,7 @@ class VisitingDay
     private $day;
 
     /**
-     * @ORM\OneToMany(targetEntity="VisitDayHour", mappedBy="visitingDay")
+     * @ORM\OneToMany(targetEntity="VisitDayHour", mappedBy="visitDay")
      */
     private $visitDayHours;
 

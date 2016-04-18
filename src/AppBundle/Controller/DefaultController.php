@@ -18,7 +18,11 @@ class DefaultController extends Controller
     public function indexAction(Request $request)
     {
         $subscribeForm = $this->createForm(SubscribeForm::class, new Subscriber(), ['action' => $this->generateUrl('subscriber_new')]);
+        $days = $this->getDoctrine()->getRepository('AppBundle:VisitingDay')->findAll();
         // replace this example code with whatever you need
-        return ['subscribeForm' => $subscribeForm->createView()];
+        return [
+            'days' => $days,
+            'subscribeForm' => $subscribeForm->createView()
+        ];
     }
 }

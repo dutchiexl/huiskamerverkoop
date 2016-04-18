@@ -1,0 +1,26 @@
+parameters:
+
+    # Classes
+    app.entity.visitday.class:  AppBundle\Entity\VisitingDay
+    app.entity.visitdayhour.class:  AppBundle\Entity\VisitDayHour
+
+services:
+    app.form.type.visit:
+        class: AppBundle\Form\SubscribeForm
+        arguments: ["@app.visitday_repository","@app.visitdayhour_repository"]
+        tags:
+            - { name: form.type }
+
+    # Taxonomy repository as a service.
+    app.visitday_repository:
+            class: Doctrine\ORM\EntityRepository
+            factory: ["@doctrine", getRepository]
+            arguments:
+                - "%app.entity.visitday.class%"
+
+    # Taxonomy repository as a service.
+    app.visitdayhour_repository:
+            class: Doctrine\ORM\EntityRepository
+            factory: ["@doctrine", getRepository]
+            arguments:
+                - "%app.entity.visitdayhour.class%"

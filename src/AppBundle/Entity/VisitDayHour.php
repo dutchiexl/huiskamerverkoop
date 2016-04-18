@@ -24,7 +24,7 @@ class VisitDayHour
 
     /**
      * @ORM\ManyToOne(targetEntity="VisitingDay", inversedBy="visitDayHours")
-     * @ORM\JoinColumn(name="visiting_day_hours", referencedColumnName="id")
+     * @ORM\JoinColumn(name="visiting_day", referencedColumnName="id")
      */
     private $visitDay;
 
@@ -46,7 +46,14 @@ class VisitDayHour
      * @ORM\OneToMany(targetEntity="Subscriber", mappedBy="visit")
      */
     private $subscribers;
-    
+
+    function __toString()
+    {
+        return $this->time->format('H:i');
+    }
+
+
+
     //<editor-fold desc="Generated Getters/Setters">
     /**
      * Get id

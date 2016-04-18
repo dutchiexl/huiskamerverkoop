@@ -2,14 +2,28 @@
 
 namespace AppBundle\Form;
 
+use AppBundle\Repository\VisitDayHourRepository;
+use AppBundle\Repository\VisitingDayRepository;
+use Glifery\EntityHiddenTypeBundle\Form\Type\EntityHiddenType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class SubscribeForm extends AbstractType
 {
+    private $visitingDayRepository;
+    private $visitDayHourRepository;
+
+    public function __construct(VisitingDayRepository $visitingDayRepository, VisitDayHourRepository $visitDayHourRepository)
+    {
+        $this->visitingDayRepository = $visitingDayRepository;
+        $this->visitDayHourRepository = $visitDayHourRepository;
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('firstName')
@@ -21,10 +35,18 @@ class SubscribeForm extends AbstractType
                 'multiple' => true,
                 'expanded' => true
             ))
-            ->add('visit', EntityType::class, array(
-                'class' => 'AppBundle:VisitDayHour',
-                'choice_label' => 'time',
-            ))
+            ->add('visit', HiddenType::class, [
+            ])
+            ->add('day', ChoiceType::class, [
+                'placeholder' => 'Choose an option',
+                'empty_data' => null,
+                'mapped' => false,
+                'expanded' => true,
+                'choices' => [
+                    'a' => 1,
+                    'b' => 2,
+                ]
+            ])
             ->add('save', SubmitType::class, [
                     'label' => 'submit',
                     'attr' => array('class' => 'btn btn-primary'),

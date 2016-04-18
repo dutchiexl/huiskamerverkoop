@@ -17,6 +17,7 @@
       <parameter key="SensioFrameworkExtraBundle">Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle</parameter>
       <parameter key="AppBundle">AppBundle\AppBundle</parameter>
       <parameter key="StofDoctrineExtensionsBundle">Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle</parameter>
+      <parameter key="GliferyEntityHiddenTypeBundle">Glifery\EntityHiddenTypeBundle\GliferyEntityHiddenTypeBundle</parameter>
       <parameter key="DebugBundle">Symfony\Bundle\DebugBundle\DebugBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
       <parameter key="SensioDistributionBundle">Sensio\Bundle\DistributionBundle\SensioDistributionBundle</parameter>
@@ -34,6 +35,8 @@
     <parameter key="mailer_user">null</parameter>
     <parameter key="mailer_password">null</parameter>
     <parameter key="secret">788e9790cbf28f16264ae5fa64ee2c5048f62fdb</parameter>
+    <parameter key="app.entity.visitday.class">AppBundle\Entity\VisitingDay</parameter>
+    <parameter key="app.entity.visitdayhour.class">AppBundle\Entity\VisitDayHour</parameter>
     <parameter key="locale">en</parameter>
     <parameter key="fragment.renderer.hinclude.global_template">null</parameter>
     <parameter key="fragment.path">/_fragment</parameter>
@@ -326,6 +329,7 @@
     <parameter key="stof_doctrine_extensions.listener.softdeleteable.class">Gedmo\SoftDeleteable\SoftDeleteableListener</parameter>
     <parameter key="stof_doctrine_extensions.listener.uploadable.class">Gedmo\Uploadable\UploadableListener</parameter>
     <parameter key="stof_doctrine_extensions.listener.reference_integrity.class">Gedmo\ReferenceIntegrity\ReferenceIntegrityListener</parameter>
+    <parameter key="glifery.entity_hidden_type.entity_form_type.class">Glifery\EntityHiddenTypeBundle\Form\Type\EntityHiddenType</parameter>
     <parameter key="web_profiler.debug_toolbar.position">bottom</parameter>
     <parameter key="web_profiler.debug_toolbar.intercept_redirects">false</parameter>
     <parameter key="web_profiler.debug_toolbar.mode">2</parameter>
@@ -396,6 +400,19 @@
     </parameter>
   </parameters>
   <services>
+    <service id="app.form.type.visit" class="AppBundle\Form\SubscribeForm">
+      <tag name="form.type"/>
+      <argument type="service" id="app.visitday_repository"/>
+      <argument type="service" id="app.visitdayhour_repository"/>
+    </service>
+    <service id="app.visitday_repository" class="Doctrine\ORM\EntityRepository">
+      <argument>AppBundle\Entity\VisitingDay</argument>
+      <factory service="doctrine" method="getRepository"/>
+    </service>
+    <service id="app.visitdayhour_repository" class="Doctrine\ORM\EntityRepository">
+      <argument>AppBundle\Entity\VisitDayHour</argument>
+      <factory service="doctrine" method="getRepository"/>
+    </service>
     <service id="controller_name_converter" class="Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser" public="false">
       <tag name="monolog.logger" channel="request"/>
       <argument type="service" id="kernel"/>
@@ -845,6 +862,7 @@
           <service class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension" public="false">
             <argument type="service" id="service_container"/>
             <argument type="collection">
+              <argument key="AppBundle\Form\SubscribeForm">app.form.type.visit</argument>
               <argument key="Symfony\Component\Form\Extension\Core\Type\FormType">form.type.form</argument>
               <argument key="Symfony\Component\Form\Extension\Core\Type\BirthdayType">form.type.birthday</argument>
               <argument key="Symfony\Component\Form\Extension\Core\Type\CheckboxType">form.type.checkbox</argument>
@@ -877,6 +895,7 @@
               <argument key="Symfony\Component\Form\Extension\Core\Type\ResetType">form.type.reset</argument>
               <argument key="Symfony\Component\Form\Extension\Core\Type\CurrencyType">form.type.currency</argument>
               <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType">form.type.entity</argument>
+              <argument key="Glifery\EntityHiddenTypeBundle\Form\Type\EntityHiddenType">glifery.entity_hidden_type.entity_form_type</argument>
             </argument>
             <argument type="collection">
               <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="collection">
@@ -1517,7 +1536,7 @@
       <argument type="collection">
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>570ebf767bbc19.04187442</argument>
+            <argument>57149a130b04d0.23028521</argument>
           </service>
         </argument>
       </argument>
@@ -1646,7 +1665,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>570ebf767bbc19.04187442</argument>
+            <argument>57149a130b04d0.23028521</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -2172,6 +2191,10 @@
         </service>
       </argument>
       <argument>Stof\DoctrineExtensionsBundle\Uploadable\UploadedFileInfo</argument>
+    </service>
+    <service id="glifery.entity_hidden_type.entity_form_type" class="Glifery\EntityHiddenTypeBundle\Form\Type\EntityHiddenType">
+      <tag name="form.type" alias="entity_hidden"/>
+      <argument type="service" id="doctrine"/>
     </service>
     <service id="data_collector.dump" class="Symfony\Component\HttpKernel\DataCollector\DumpDataCollector">
       <tag name="data_collector" id="dump" template="@Debug/Profiler/dump.html.twig" priority="240"/>
