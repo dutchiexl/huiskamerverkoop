@@ -23,6 +23,27 @@
     <![endif]-->
 </head>
 <body>
+<nav id="navigation" class="navbar">
+
+    <!-- .container -->
+    <div class="container">
+
+        <div class="navbar-brand">
+            <a href="index.html"><img src="images/logo.png" alt="Logo"></a> <!-- site logo -->
+        </div>
+
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#header" class="smooth-scroll">Home</a></li>
+            <li><a href="#features" class="smooth-scroll">Features</a></li>
+            <li><a href="#pricing" class="smooth-scroll">Pricing</a></li>
+            <li><a href="page.html">Page</a></li>
+            <li class="menu-btn"><a href="#">Download App</a></li>
+        </ul>
+
+    </div>
+    <!-- .container end -->
+
+</nav>
 <section class="header">
     {% block header %}
         <div class="text">
@@ -33,10 +54,20 @@
 <section class="content">
 
 </section>
+{% if app.request.hasPreviousSession %}
+    {% for type, messages in app.session.flashbag.all() %}
+        {% for message in messages %}
+            <div class="alert alert-{{ type }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+{% endif %}
 {% block body %}
 {% endblock %}
 
 <script src="{{ asset('js/main.js') }}"></script>
+<script src="{{ asset('js/subscribe.js') }}"></script>
 {% block javascripts %}{% endblock %}
 </body>
 </html>

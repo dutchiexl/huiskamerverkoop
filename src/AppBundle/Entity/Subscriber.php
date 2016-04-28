@@ -57,7 +57,7 @@ class Subscriber
      * @ORM\ManyToOne(targetEntity="VisitDayHour", inversedBy="subscribers")
      * @ORM\JoinTable(name="subscriber_visits")
      *
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message="Gelieve aan te geven op welk uur je graag had langsgekomen.")
      */
     private $visit;
 

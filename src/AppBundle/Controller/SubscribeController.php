@@ -6,6 +6,7 @@ use AppBundle\Entity\Subscriber;
 use AppBundle\Form\SubscribeForm;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -21,6 +22,7 @@ class SubscribeController extends Controller
      *
      * @Route("/subscribe", name="subscriber_new")
      * @Method({ "POST"})
+     * @Template("AppBundle:default:index.html.twig")
      */
     public function newAction(Request $request)
     {
@@ -36,8 +38,11 @@ class SubscribeController extends Controller
             return $this->redirectToRoute('homepage');
         }
 
-        return $this->render('visitdayhour/new.html.twig', array(
-            'form' => $form->createView(),
-        ));
+        $days = $this->getDoctrine()->getRepository('AppBundle:VisitingDay')->findAll();
+        // replace this example code with whatever you need
+        return [
+            'days' => $days,
+            'subscribeForm' => $form->createView()
+        ];
     }
 }
