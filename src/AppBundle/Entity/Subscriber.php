@@ -13,7 +13,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *
  * @ORM\Table(name="subscriber")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\SubscriberRepository")
- * @UniqueEntity("email")
+ * @UniqueEntity("email",  message="Er is reeds iemand ingeschreven met dit email adres.")
  */
 class Subscriber
 {

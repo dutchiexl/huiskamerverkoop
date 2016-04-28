@@ -17,6 +17,12 @@ body {
   }
 }
 
+.radio{
+  .required{
+    color: white;
+  }
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: Lato, Arial, sans-serif;
   font-weight: 400;
@@ -71,8 +77,8 @@ textarea {
 section.header {
   color: #FFF;
   background-color: #ff6969;
-  
-  h1,h2,h3,h4{
+
+  h1, h2, h3, h4 {
     color: #fff;
   }
 
@@ -109,7 +115,7 @@ section.header {
 
   .header-form-wrapper {
     position: relative;
-    height: 620px;
+    height: auto;
     color: #fed3d3;
     background-color: #ee5555;
     padding: 25px 30px 30px;

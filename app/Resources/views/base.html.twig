@@ -31,8 +31,11 @@
 <nav id="navigation" class="navbar">
     <div class="container">
         <div class="navbar-brand">
-            <a href="{{ path('homepage') }}"><i class="zmdi zmdi-shopping-basket"></i></a> <!-- site logo -->
+            <a href="{{ path('homepage') }}"><i class="zmdi zmdi-shopping-basket"></i></a>
         </div>
+        <ul class="nav navbar-nav">
+            <li><a href="#features" class="smooth-scroll">Meer info</a></li>
+        </ul>
     </div>
 </nav>
 <section class="header" id="header">
@@ -42,18 +45,19 @@
         </div>
     {% endblock %}
 </section>
-{% if app.request.hasPreviousSession %}
-    {% for type, messages in app.session.flashbag.all() %}
-        {% for message in messages %}
-            <div class="alert alert-{{ type }}">
-                {{ message }}
-            </div>
-        {% endfor %}
-    {% endfor %}
-{% endif %}
 {% block body %}
 {% endblock %}
-
+<footer id="footer">
+    <!-- .container -->
+    <div class="container">
+        <p class="copyright-text">© 2016 by <a href="#">Huiskamerverkoop</a></p>
+        {#<div class="socials">#}
+            {#<a href="#" title="Facebook"><i class="fa fa-facebook"></i></a>#}
+            {#<a href="#" title="Twitter"><i class="fa fa-twitter"></i></a>#}
+            {#<a href="#" title="Google Plus"><i class="fa fa-google-plus"></i></a>#}
+        {#</div>#}
+    </div>
+</footer>
 <script src="{{ asset('js/main.js') }}"></script>
 <script src="{{ asset('js/subscribe.js') }}"></script>
 {% block javascripts %}{% endblock %}
