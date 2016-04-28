@@ -1,12 +1,20 @@
 @import 'variables';
 @import '../../../../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap';
+@import "stolen";
 
 body {
-  font-family: Roboto, Arial, sans-serif;
   color: #808080;
+  font-family: Roboto, Arial, sans-serif;
   font-size: 15px;
-  line-height: 24px;
   font-weight: 300;
+  line-height: 24px;
+}
+
+.navbar-brand {
+  i {
+    color: #ff6969;
+    font-size: 50px;
+  }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -15,19 +23,19 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 0px;
 }
 
-input[type="color"],
-input[type="date"],
-input[type="datetime"],
-input[type="datetime-local"],
-input[type="email"],
-input[type="month"], input[type="number"],
-input[type="password"],
-.ie input[type="range"],
-.ie9 input[type="range"],
-input[type="search"], input[type="tel"],
-input[type="text"],
-input[type="time"], input[type="url"],
-input[type="week"],
+input[type='color'],
+input[type='date'],
+input[type='datetime'],
+input[type='datetime-local'],
+input[type='email'],
+input[type='month'], input[type='number'],
+input[type='password'],
+.ie input[type='range'],
+.ie9 input[type='range'],
+input[type='search'], input[type='tel'],
+input[type='text'],
+input[type='time'], input[type='url'],
+input[type='week'],
 select,
 textarea {
   height: 50px;
@@ -44,14 +52,17 @@ textarea {
   font-style: italic;
   opacity: 0.5;
 }
+
 :-moz-placeholder {
   font-style: italic;
   opacity: 0.5;
 }
+
 ::-moz-placeholder {
   font-style: italic;
   opacity: 0.5;
 }
+
 :-ms-input-placeholder {
   font-style: italic;
   opacity: 0.5;
@@ -60,6 +71,10 @@ textarea {
 section.header {
   color: #FFF;
   background-color: #ff6969;
+  
+  h1,h2,h3,h4{
+    color: #fff;
+  }
 
   h4 {
     font-size: 20px;
@@ -75,12 +90,12 @@ section.header {
   }
 
   .header-heading-title {
-    text-align: center;
     margin-bottom: 60px;
+    text-align: center;
 
     h1 {
-      font-size: 36px;
       line-height: 44px;
+      font-size: 36px;
       font-weight: 700;
       margin: 0;
     }
@@ -93,7 +108,6 @@ section.header {
   }
 
   .header-form-wrapper {
-    overflow: hidden;
     position: relative;
     height: 620px;
     color: #fed3d3;
@@ -107,34 +121,85 @@ section.header {
       margin: 10px 0px 0px;
     }
 
-    input[type="text"], input[type="email"], textarea {
-      width: 100%;
-      color: #FFF;
+    input[type='text'],
+    input[type='email'],
+    textarea {
       background-color: #e14b4b;
+      color: #FFF;
       margin-bottom: 15px;
-      border: 0px;
+      border: 0;
       box-shadow: 1px 1px 1px rgba(255, 255, 255, .1), inset 1px 1px 2px rgba(0, 0, 0, .1);
+      width: 100%;
     }
   }
 }
 
 .content-block {
   @include container-fixed;
+
   .left {
     @include make-xs-column(12);
     @include make-sm-column(6);
   }
+
   .right {
     @include make-xs-column(12);
     @include make-sm-column(6);
   }
+}
 
-  .content {
+.post-heading-center {
+  text-align: center;
+  margin-bottom: 40px;
+}
 
-  }
+.post-heading-center:after {
+  display: block;
+  width: 200px;
+  height: 1px;
+  content: '';
+  background-color: #e0e0e0;
+  margin: 20px auto 0px;
+}
 
-  .img {
+.post-heading-center.no-border-bottom:after {
+  display: none;
+}
 
-  }
+.post-heading-center h2 {
+  color: #202020;
+  font-weight: 700;
+  margin: 0px;
+}
+
+.post-heading-center p {
+  color: #a0a0a0;
+  font-size: 20px;
+  line-height: 26px;
+  margin: 12px 0px 0px;
+}
+
+.post-heading-left {
+  margin-bottom: 25px;
+}
+
+.post-heading-left h2 {
+  font-size: 30px;
+  line-height: 38px;
+  margin: 0px;
+}
+
+.post-heading-left h2 strong {
+  color: #ff6969;
+}
+
+.post-heading-left p {
+  color: #a9a9a9;
+  font-size: 18px;
+  margin: 5px 0px 0px;
+}
+
+.post-heading-left.top-heading-desc p {
+  margin: 0px 0px 5px;
 }
 

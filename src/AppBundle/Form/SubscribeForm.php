@@ -5,12 +5,9 @@ namespace AppBundle\Form;
 use AppBundle\Repository\VisitDayHourRepository;
 use AppBundle\Repository\VisitingDayRepository;
 use Doctrine\ORM\EntityRepository;
-use Glifery\EntityHiddenTypeBundle\Form\Type\EntityHiddenType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -64,7 +61,7 @@ class SubscribeForm extends AbstractType
                     $er->findAll();
                 },
             ])
-            ->add('visit', EntityHiddenType::class,[
+            ->add('visit', \AppBundle\Form\Type\EntityHiddenType::class,[
                 'class' => 'AppBundle\Entity\VisitDayHour'
             ])
             ->add('save', SubmitType::class, [

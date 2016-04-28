@@ -24,3 +24,8 @@ services:
             factory: ["@doctrine", getRepository]
             arguments:
                 - "%app.entity.visitdayhour.class%"
+    app.type.entity_hidden:
+       class: AppBundle\Form\Type\EntityHiddenType
+       arguments: ["@doctrine.orm.entity_manager"]
+       tags:
+            - { name: form.type }

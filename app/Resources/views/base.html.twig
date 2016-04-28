@@ -13,6 +13,11 @@
 
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}"/>
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}"/>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
+
     {% block stylesheets %}{% endblock %}
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
@@ -26,7 +31,7 @@
 <nav id="navigation" class="navbar">
     <div class="container">
         <div class="navbar-brand">
-            <a href="{{ path('homepage') }}"><img src="images/logo.png" alt="Logo"></a> <!-- site logo -->
+            <a href="{{ path('homepage') }}"><i class="zmdi zmdi-shopping-basket"></i></a> <!-- site logo -->
         </div>
     </div>
 </nav>
@@ -36,9 +41,6 @@
             Huiskamerverkoop
         </div>
     {% endblock %}
-</section>
-<section class="content">
-
 </section>
 {% if app.request.hasPreviousSession %}
     {% for type, messages in app.session.flashbag.all() %}
