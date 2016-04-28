@@ -24,27 +24,13 @@
 </head>
 <body>
 <nav id="navigation" class="navbar">
-
-    <!-- .container -->
     <div class="container">
-
         <div class="navbar-brand">
-            <a href="index.html"><img src="images/logo.png" alt="Logo"></a> <!-- site logo -->
+            <a href="{{ path('homepage') }}"><img src="images/logo.png" alt="Logo"></a> <!-- site logo -->
         </div>
-
-        <ul class="nav navbar-nav">
-            <li class="active"><a href="#header" class="smooth-scroll">Home</a></li>
-            <li><a href="#features" class="smooth-scroll">Features</a></li>
-            <li><a href="#pricing" class="smooth-scroll">Pricing</a></li>
-            <li><a href="page.html">Page</a></li>
-            <li class="menu-btn"><a href="#">Download App</a></li>
-        </ul>
-
     </div>
-    <!-- .container end -->
-
 </nav>
-<section class="header">
+<section class="header" id="header">
     {% block header %}
         <div class="text">
             Huiskamerverkoop

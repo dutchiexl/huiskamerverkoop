@@ -9,8 +9,10 @@ use Glifery\EntityHiddenTypeBundle\Form\Type\EntityHiddenType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -27,9 +29,25 @@ class SubscribeForm extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('firstName')
-            ->add('lastName')
-            ->add('email')
+        $builder
+            ->add('firstName', TextType::class,[
+                'label' => false,
+                'attr' => [
+                    'placeholder' => 'Voornaam'
+                ]
+            ])
+            ->add('lastName', TextType::class,[
+                'label' => false,
+                'attr' => [
+                    'placeholder' => 'Naam'
+                ]
+            ])
+            ->add('email', EmailType::class,[
+                'label' => false,
+                'attr' => [
+                    'placeholder' => 'Email adres'
+                ]
+            ])
             ->add('interests', EntityType::class, array(
                 'class' => 'AppBundle:Interest',
                 'choice_label' => 'name',

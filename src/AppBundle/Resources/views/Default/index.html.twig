@@ -1,41 +1,55 @@
 {% extends 'base.html.twig' %}
 
 {% block header %}
+    <div class="header-container">
+
+        <!-- .container -->
+        <div class="container">
+            <div class="header-heading-title">
+                <h1>Huiskamerverkoop</h1>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-md-5">
+                    <div class="header-form-wrapper">
+                        <div class="header-form-heading">
+                            <h4><i class="fa fa-pencil"></i> Schrijf je in</h4>
+                        </div>
+                        {{ form_errors(subscribeForm) }}
+                        {{ form_start(subscribeForm) }}
+                        {{ form_row(subscribeForm.firstName) }}
+                        {{ form_row(subscribeForm.lastName) }}
+                        {{ form_row(subscribeForm.email) }}
+                        {{ form_row(subscribeForm.interests) }}
+                        Welke dag had je graag gekomen ?
+                        {{ form_row(subscribeForm.day) }}
+                        {{ form_row(subscribeForm.visit) }}
+                        {% for day in days %}
+                            <div class="hidden hour-wrapper" data-day-id="{{ day.id }}">
+                                {% if day.visitDayHours|length == 0 %}
+                                    deze dag is reeds volzet gelieve een andere dag te kiezen
+                                {% endif %}
+                                {% for hour in day.visitDayHours %}
+                                    <input type="radio" name="subscribe_form[visit]"
+                                           value="{{ hour.id }}"> {{ hour }}<br>
+                                {% endfor %}
+                            </div>
+                        {% endfor %}
+                        {{ form_end(subscribeForm) }}
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-7">
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 {% block body %}
     <section class="content-block full form">
-        <div class="left content">
-            <h2>Schrijf je in</h2>
-            {{ form_errors(subscribeForm) }}
-            {{ form_start(subscribeForm) }}
-            {{ form_row(subscribeForm.firstName) }}
-            {{ form_row(subscribeForm.lastName) }}
-            {{ form_row(subscribeForm.email) }}
-            {{ form_row(subscribeForm.interests) }}
-            Welke dag had je graag gekomen ?
-            {{ form_row(subscribeForm.day) }}
-            {{ form_row(subscribeForm.visit) }}
-            {% for day in days %}
-                <div class="hidden hour-wrapper" data-day-id="{{ day.id }}">
-                    {% if day.visitDayHours|length == 0 %}
-                        deze dag is reeds volzet gelieve een andere dag te kiezen
-                    {% endif %}
-                    {% for hour in day.visitDayHours %}
-                        <input type="radio" name="subscribe_form[visit]" value="{{ hour.id }}"> {{ hour }}<br>
-                    {% endfor %}
-                </div>
-            {% endfor %}
-            {{ form_end(subscribeForm) }}
-        </div>
-        <div class="right img">
+
         </div>
     </section>
     <section class="content-block full question">
-        <div class="left content">
-            <h2>Heb je nog vragen ?</h2>
-        </div>
-        <div class="right img">
-        </div>
+
     </section>
 {% endblock %}

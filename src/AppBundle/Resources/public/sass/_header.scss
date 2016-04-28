@@ -1,0 +1,224 @@
+#header {
+  position: relative;
+  color: #FFF;
+  background-color: #ff6969;
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #FFF;
+  }
+
+  .header-container {
+    background: url('../images/base-header-overlay.png') repeat top left;
+    padding: 60px 0px 40px;
+  }
+
+  .header-logo {
+    display: none;
+    text-align: center;
+    margin-bottom: 40px;
+    img {
+      max-height: 40px;
+    }
+  }
+
+  .header-heading-title {
+    text-align: center;
+    margin-bottom: 60px;
+
+    h1 {
+      font-size: 36px;
+      line-height: 44px;
+      font-weight: 700;
+      margin: 0;
+    }
+    h4 {
+      font-size: 24px;
+      line-height: 32px;
+      font-weight: 300;
+      margin: 20px 0 0;
+    }
+  }
+
+  .header-form-wrapper {
+    overflow: hidden;
+    position: relative;
+    height: 560px;
+    color: #fed3d3;
+    background-color: #ee5555;
+    padding: 25px 30px 30px;
+    margin-bottom: 40px;
+    border-radius: 3px;
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, .1), inset 0px 1px 1px rgba(255, 255, 255, .15), inset 0px -1px 1px rgba(255, 255, 255, .1), 0px 1px 3px rgba(0, 0, 0, .2);
+
+    .header-form-heading h4 {
+      overflow: hidden;
+      height: 26px;
+      font-size: 20px;
+      line-height: 26px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      margin: 0px;
+
+      .fa {
+        float: left;
+        font-size: 24px;
+        line-height: 26px;
+        margin-right: 12px;
+      }
+
+      p {
+        overflow: hidden;
+        max-height: 44px;
+        line-height: 22px;
+        margin: 10px 0px 0px;
+      }
+    }
+
+    .header-form {
+      margin-top: 20px;
+
+      .submit-status {
+        display: none;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+        font-size: 14px;
+        line-height: 20px;
+        text-align: center;
+        font-weight: 400;
+        background-color: rgba(0, 0, 0, .4);
+        z-index: 400;
+        border-radius: 3px;
+
+        span {
+          position: absolute;
+          top: 50%;
+          right: 15px;
+          left: 15px;
+          text-align: center;
+          background-color: #FFF;
+          padding: 15px;
+          margin-top: -50px;
+          border-radius: 3px;
+
+          .error {
+            color: #d86c6c;
+            background-color: #f6caca;
+          }
+
+          .success {
+            color: #529552;
+            background-color: #b9edb9;
+          }
+
+          .fa {
+            display: block;
+            font-size: 24px;
+            margin-bottom: 6px;
+          }
+        }
+      }
+    }
+  }
+}
+
+#header .header-form-wrapper .header-form input[type="text"], #header .header-form-wrapper .header-form input[type="email"], #header .header-form-wrapper .header-form textarea {
+  width: 100%;
+  color: #FFF;
+  background-color: #e14b4b;
+  margin-bottom: 15px;
+  border: 0px;
+  box-shadow: 1px 1px 1px rgba(255, 255, 255, .1), inset 1px 1px 2px rgba(0, 0, 0, .1);
+}
+
+#header .header-form-wrapper .header-form textarea {
+  display: block;
+  height: 90px;
+}
+
+.ie #header .header-form-wrapper .header-form input[type="text"], .ie #header .header-form-wrapper .header-form input[type="email"], .ie #header .header-form-wrapper .header-form textarea {
+  line-height: 50px;
+}
+
+#header .header-form-wrapper .header-form input[type="text"].error, #header .header-form-wrapper .header-form input[type="email"].error, #header .header-form-wrapper .header-form textarea.error {
+  background-color: #ff3131;
+}
+
+#header .header-form-wrapper .header-form input[type="text"]::-webkit-input-placeholder, #header .header-form-wrapper .header-form input[type="email"]::-webkit-input-placeholder, #header .header-form-wrapper .header-form textarea::-webkit-input-placeholder {
+  color: #FFF;
+}
+
+#header .header-form-wrapper .header-form input[type="text"]:-moz-placeholder, #header .header-form-wrapper .header-form input[type="email"]:-moz-placeholder, #header .header-form-wrapper .header-form textarea:-moz-placeholder {
+  color: #FFF;
+}
+
+#header .header-form-wrapper .header-form input[type="text"]::-moz-placeholder, #header .header-form-wrapper .header-form input[type="email"]::-moz-placeholder, #header .header-form-wrapper .header-form textarea::-moz-placeholder {
+  color: #FFF;
+}
+
+#header .header-form-wrapper .header-form input[type="text"]:-ms-input-placeholder, #header .header-form-wrapper .header-form input[type="email"]:-ms-input-placeholder, #header .header-form-wrapper .header-form textarea:-ms-input-placeholder {
+  color: #FFF;
+}
+
+#header .header-form-wrapper .header-form input[type="text"]:disabled, #header .header-form-wrapper .header-form input[type="email"]:disabled, #header .header-form-wrapper .header-form textarea:disabled {
+  color: #a9a9a9;
+  background-color: #e9e9e9 !important;
+  box-shadow: none;
+}
+
+#header .header-form-wrapper .header-form input[type="text"]:disabled::-webkit-input-placeholder, #header .header-form-wrapper .header-form input[type="email"]:disabled::-webkit-input-placeholder, #header .header-form-wrapper .header-form textarea:disabled::-webkit-input-placeholder {
+  color: #a9a9a9;
+}
+
+#header .header-form-wrapper .header-form input[type="text"]:disabled:-moz-placeholder, #header .header-form-wrapper .header-form input[type="email"]:disabled:-moz-placeholder, #header .header-form-wrapper .header-form textarea:disabled:-moz-placeholder {
+  color: #a9a9a9;
+}
+
+#header .header-form-wrapper .header-form input[type="text"]:disabled::-moz-placeholder, #header .header-form-wrapper .header-form input[type="email"]:disabled::-moz-placeholder, #header .header-form-wrapper .header-form textarea:disabled::-moz-placeholder {
+  color: #a9a9a9;
+}
+
+#header .header-form-wrapper .header-form input[type="text"]:disabled:-ms-input-placeholder, #header .header-form-wrapper .header-form input[type="email"]:disabled:-ms-input-placeholder, #header .header-form-wrapper .header-form textarea:disabled:-ms-input-placeholder {
+  color: #a9a9a9;
+}
+
+#header .header-form-wrapper .header-form input[type="submit"] {
+  width: 100%;
+  color: #4a4a4a !important;
+  text-align: center;
+  text-shadow: none;
+  background: #FFF;
+  filter: none;
+  padding-top: 19px;
+  padding-bottom: 19px;
+  margin-top: 3px;
+  border: 0px;
+}
+
+#header .header-form-wrapper .header-form input[type="submit"]:hover {
+  background-color: rgba(255, 255, 255, .9);
+}
+
+#header .header-form-wrapper .header-form input[type="submit"]:disabled, #header .header-form-wrapper .header-form input[type="submit"]:disabled:hover {
+  color: #a9a9a9 !important;
+  background-color: #e9e9e9;
+}
+
+#header .header-form-wrapper .header-form .text-desc {
+  color: #f8b4b4;
+  font-size: 13px;
+  line-height: 18px;
+  text-align: right;
+  margin-top: 8px;
+}
+
+#header .header-form-wrapper .header-form .text-desc a {
+  color: #f8b4b4;
+}
+
+#header .header-form-wrapper .header-form .text-desc a:hover {
+  color: #FFF;
+}
