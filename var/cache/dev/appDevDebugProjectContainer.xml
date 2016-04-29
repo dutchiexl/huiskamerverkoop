@@ -29,10 +29,10 @@
     <parameter key="database_name">huiskamerverkoop</parameter>
     <parameter key="database_user">root</parameter>
     <parameter key="database_password">null</parameter>
-    <parameter key="mailer_transport">smtp</parameter>
+    <parameter key="mailer_transport">gmail</parameter>
     <parameter key="mailer_host">127.0.0.1</parameter>
-    <parameter key="mailer_user">null</parameter>
-    <parameter key="mailer_password">null</parameter>
+    <parameter key="mailer_user">dutchiexl</parameter>
+    <parameter key="mailer_password">*ZoOk1y*</parameter>
     <parameter key="secret">788e9790cbf28f16264ae5fa64ee2c5048f62fdb</parameter>
     <parameter key="app.entity.visitday.class">AppBundle\Entity\VisitingDay</parameter>
     <parameter key="app.entity.visitdayhour.class">AppBundle\Entity\VisitDayHour</parameter>
@@ -168,12 +168,12 @@
     <parameter key="swiftmailer.data_collector.class">Symfony\Bundle\SwiftmailerBundle\DataCollector\MessageDataCollector</parameter>
     <parameter key="swiftmailer.mailer.default.transport.name">smtp</parameter>
     <parameter key="swiftmailer.mailer.default.delivery.enabled">true</parameter>
-    <parameter key="swiftmailer.mailer.default.transport.smtp.encryption">null</parameter>
-    <parameter key="swiftmailer.mailer.default.transport.smtp.port">25</parameter>
-    <parameter key="swiftmailer.mailer.default.transport.smtp.host">127.0.0.1</parameter>
-    <parameter key="swiftmailer.mailer.default.transport.smtp.username">null</parameter>
-    <parameter key="swiftmailer.mailer.default.transport.smtp.password">null</parameter>
-    <parameter key="swiftmailer.mailer.default.transport.smtp.auth_mode">null</parameter>
+    <parameter key="swiftmailer.mailer.default.transport.smtp.encryption">ssl</parameter>
+    <parameter key="swiftmailer.mailer.default.transport.smtp.port">465</parameter>
+    <parameter key="swiftmailer.mailer.default.transport.smtp.host">smtp.gmail.com</parameter>
+    <parameter key="swiftmailer.mailer.default.transport.smtp.username">dutchiexl</parameter>
+    <parameter key="swiftmailer.mailer.default.transport.smtp.password">*ZoOk1y*</parameter>
+    <parameter key="swiftmailer.mailer.default.transport.smtp.auth_mode">login</parameter>
     <parameter key="swiftmailer.mailer.default.transport.smtp.timeout">30</parameter>
     <parameter key="swiftmailer.mailer.default.transport.smtp.source_ip">null</parameter>
     <parameter key="swiftmailer.spool.default.memory.path">/Library/WebServer/Documents/valerie/huiskamerverkoop/var/cache/dev/swiftmailer/spool/default</parameter>
@@ -414,6 +414,9 @@
     <service id="app.type.entity_hidden" class="AppBundle\Form\Type\EntityHiddenType">
       <tag name="form.type"/>
       <argument type="service" id="doctrine.orm.default_entity_manager"/>
+    </service>
+    <service id="twig.extension.intl" class="Twig_Extensions_Extension_Intl">
+      <tag name="twig.extension"/>
     </service>
     <service id="controller_name_converter" class="Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser" public="false">
       <tag name="monolog.logger" channel="request"/>
@@ -1538,7 +1541,7 @@
       <argument type="collection">
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>57226861226042.89659190</argument>
+            <argument>572312cfeb6366.10085247</argument>
           </service>
         </argument>
       </argument>
@@ -1667,7 +1670,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>57226861226042.89659190</argument>
+            <argument>572312cfeb6366.10085247</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -1728,6 +1731,9 @@
           <argument key="thousands_separator">,</argument>
         </argument>
       </argument>
+      <call method="addExtension">
+        <argument type="service" id="twig.extension.intl"/>
+      </call>
       <call method="addExtension">
         <argument type="service">
           <service class="Symfony\Bridge\Twig\Extension\LogoutUrlExtension" public="false">
@@ -2561,26 +2567,26 @@
               </argument>
             </argument>
             <call method="setUsername">
-              <argument>null</argument>
+              <argument>dutchiexl</argument>
             </call>
             <call method="setPassword">
-              <argument>null</argument>
+              <argument>*ZoOk1y*</argument>
             </call>
             <call method="setAuthMode">
-              <argument>null</argument>
+              <argument>login</argument>
             </call>
           </service>
         </argument>
       </argument>
       <argument type="service" id="swiftmailer.mailer.default.transport.eventdispatcher"/>
       <call method="setHost">
-        <argument>127.0.0.1</argument>
+        <argument>smtp.gmail.com</argument>
       </call>
       <call method="setPort">
-        <argument>25</argument>
+        <argument>465</argument>
       </call>
       <call method="setEncryption">
-        <argument>null</argument>
+        <argument>ssl</argument>
       </call>
       <call method="setTimeout">
         <argument>30</argument>

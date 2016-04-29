@@ -65,8 +65,8 @@ class SubscribeForm extends AbstractType
                 'class' => 'AppBundle\Entity\VisitDayHour'
             ])
             ->add('save', SubmitType::class, [
-                    'label' => 'submit',
-                    'attr' => array('class' => 'btn btn-primary'),
+                    'label' => 'Inschrijven',
+                    'attr' => array('class' => 'btn-medium'),
                     'translation_domain' => 'question'
                 ]
             );

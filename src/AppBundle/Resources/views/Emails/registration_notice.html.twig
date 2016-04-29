@@ -1,0 +1,7 @@
+<h1>Er is een nieuwe inschrijving voor de huiskamerverkoop</h1>
+<p>
+    {{ subscription.firstname }} {{ subscription.lastname }}<br>
+    {{ subscription.email }}<br>
+    {{ subscription.visit.visitDay|localizeddate('full', 'none', 'nl_BE', null, 'eeee d MMM' )}}<br>
+    {{ subscription.visit.time|date('H') }} u.<br>
+</p>
