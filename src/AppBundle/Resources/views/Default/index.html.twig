@@ -39,15 +39,32 @@
                                 {% if day.visitDayHours|length == 0 %}
                                     <p>deze dag is reeds volzet gelieve een andere dag te kiezen</p>
                                 {% else %}
-                                    <p>Welk tijdstip wil je komen ?</p>
+                                    {% set available_hours = 0 %}
+
                                     {% for hour in day.visitDayHours %}
-                                        <div class="radio">
-                                            <label>
-                                                <input type="radio" name="subscribe_form[visit]" value="{{ hour.id }}">
-                                                {{ hour }}
-                                            </label>
-                                        </div>
+                                        {% if hour.places > hour.subscribers|length %}
+                                            {% set available_hours = available_hours + 1 %}
+                                        {% endif %}
                                     {% endfor %}
+
+                                    {% if  available_hours == 0 %}
+                                        <p>deze dag is reeds volzet gelieve een andere dag te kiezen</p>
+                                    {% else %}
+                                        <p>Welk tijdstip wil je komen ?</p>
+                                        {% for hour in day.visitDayHours %}
+                                            {% if hour.places > hour.subscribers|length %}
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="subscribe_form[visit]"
+                                                               value="{{ hour.id }}">
+                                                        {{ hour }}
+                                                    </label>
+                                                </div>
+                                                {% set available_hours = available_hours + 1 %}
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endif %}
+
                                 {% endif %}
                             </div>
                         {% endfor %}
