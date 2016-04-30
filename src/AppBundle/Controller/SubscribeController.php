@@ -78,5 +78,17 @@ class SubscribeController extends Controller
                 'text/html'
             );
         $this->get('mailer')->send($message);
+        $message = \Swift_Message::newInstance()
+            ->setSubject('Nieuwe registratie huiskamerverkoop')
+            ->setFrom('valeriediels@hotmail.com')
+            ->setTo('valeriediels@hotmail.com')
+            ->setBody(
+                $this->renderView(
+                    'AppBundle:Emails:registration_notice.html.twig',
+                    array('subscription' => $subscription)
+                ),
+                'text/html'
+            );
+        $this->get('mailer')->send($message);
     }
 }

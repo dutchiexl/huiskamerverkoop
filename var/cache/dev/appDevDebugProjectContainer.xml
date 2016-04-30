@@ -29,10 +29,12 @@
     <parameter key="database_name">huiskamerverkoop</parameter>
     <parameter key="database_user">root</parameter>
     <parameter key="database_password">null</parameter>
-    <parameter key="mailer_transport">gmail</parameter>
-    <parameter key="mailer_host">127.0.0.1</parameter>
-    <parameter key="mailer_user">dutchiexl</parameter>
-    <parameter key="mailer_password">*ZoOk1y*</parameter>
+    <parameter key="mailer_transport">smtp</parameter>
+    <parameter key="mailer_host">smtp.live.com</parameter>
+    <parameter key="mailer_user">valeriediels@hotmail.com</parameter>
+    <parameter key="mailer_password">1212Diva</parameter>
+    <parameter key="mailer_encryption">tls</parameter>
+    <parameter key="mailer_port">587</parameter>
     <parameter key="secret">788e9790cbf28f16264ae5fa64ee2c5048f62fdb</parameter>
     <parameter key="app.entity.visitday.class">AppBundle\Entity\VisitingDay</parameter>
     <parameter key="app.entity.visitdayhour.class">AppBundle\Entity\VisitDayHour</parameter>
@@ -168,12 +170,12 @@
     <parameter key="swiftmailer.data_collector.class">Symfony\Bundle\SwiftmailerBundle\DataCollector\MessageDataCollector</parameter>
     <parameter key="swiftmailer.mailer.default.transport.name">smtp</parameter>
     <parameter key="swiftmailer.mailer.default.delivery.enabled">true</parameter>
-    <parameter key="swiftmailer.mailer.default.transport.smtp.encryption">ssl</parameter>
-    <parameter key="swiftmailer.mailer.default.transport.smtp.port">465</parameter>
-    <parameter key="swiftmailer.mailer.default.transport.smtp.host">smtp.gmail.com</parameter>
-    <parameter key="swiftmailer.mailer.default.transport.smtp.username">dutchiexl</parameter>
-    <parameter key="swiftmailer.mailer.default.transport.smtp.password">*ZoOk1y*</parameter>
-    <parameter key="swiftmailer.mailer.default.transport.smtp.auth_mode">login</parameter>
+    <parameter key="swiftmailer.mailer.default.transport.smtp.encryption">tls</parameter>
+    <parameter key="swiftmailer.mailer.default.transport.smtp.port">587</parameter>
+    <parameter key="swiftmailer.mailer.default.transport.smtp.host">smtp.live.com</parameter>
+    <parameter key="swiftmailer.mailer.default.transport.smtp.username">valeriediels@hotmail.com</parameter>
+    <parameter key="swiftmailer.mailer.default.transport.smtp.password">1212Diva</parameter>
+    <parameter key="swiftmailer.mailer.default.transport.smtp.auth_mode">null</parameter>
     <parameter key="swiftmailer.mailer.default.transport.smtp.timeout">30</parameter>
     <parameter key="swiftmailer.mailer.default.transport.smtp.source_ip">null</parameter>
     <parameter key="swiftmailer.spool.default.memory.path">/Library/WebServer/Documents/valerie/huiskamerverkoop/var/cache/dev/swiftmailer/spool/default</parameter>
@@ -1541,7 +1543,7 @@
       <argument type="collection">
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>572312cfeb6366.10085247</argument>
+            <argument>5724a1db1c0b31.06972491</argument>
           </service>
         </argument>
       </argument>
@@ -1670,7 +1672,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>572312cfeb6366.10085247</argument>
+            <argument>5724a1db1c0b31.06972491</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -2567,26 +2569,26 @@
               </argument>
             </argument>
             <call method="setUsername">
-              <argument>dutchiexl</argument>
+              <argument>valeriediels@hotmail.com</argument>
             </call>
             <call method="setPassword">
-              <argument>*ZoOk1y*</argument>
+              <argument>1212Diva</argument>
             </call>
             <call method="setAuthMode">
-              <argument>login</argument>
+              <argument>null</argument>
             </call>
           </service>
         </argument>
       </argument>
       <argument type="service" id="swiftmailer.mailer.default.transport.eventdispatcher"/>
       <call method="setHost">
-        <argument>smtp.gmail.com</argument>
+        <argument>smtp.live.com</argument>
       </call>
       <call method="setPort">
-        <argument>465</argument>
+        <argument>587</argument>
       </call>
       <call method="setEncryption">
-        <argument>ssl</argument>
+        <argument>tls</argument>
       </call>
       <call method="setTimeout">
         <argument>30</argument>
