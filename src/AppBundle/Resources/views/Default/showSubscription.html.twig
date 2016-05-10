@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="subscriptions">
+        {% for day in days %}
+            <table class="table-striped table">
+                <thead>
+                <th>Dag</th>
+                <th>Uur</th>
+                <th>Voornaam</th>
+                <th>Naam</th>
+                <th>email</th>
+                <th>Aangemaakt op</th>
+                </thead>
+                <tbody>
+                {% for hour in day.visitDayHours %}
+                    {% for subscriber in hour.subscribers %}
+                        <tr>
+                            <td>{{ day.day|date('d M Y') }}</td>
+                            <td>{{ hour.time|date('h:i') }}</td>
+                            <td>{{ subscriber.firstName }}</td>
+                            <td>{{ subscriber.lastName }}</td>
+                            <td>{{ subscriber.email }}</td>
+                            <td>{{ subscriber.created|date('d M Y') }}</td>
+                        </tr>
+                    {% endfor %}
+                {% endfor %}
+                </tbody>
+            </table>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -63,4 +63,18 @@ class DefaultController extends Controller
             );
         $this->get('mailer')->send($message);
     }
+
+    /**
+     * @Route("/showsubscriptions65465423165446513216544", name="showsubscriptions")
+     * @Template()
+     */
+    public function showSubscriptionAction()
+    {
+        $subscriptions = $this->getDoctrine()->getRepository('AppBundle:Subscriber')->findAll();
+        $visitDays = $this->getDoctrine()->getRepository('AppBundle:VisitingDay')->findBy([], ['day' => 'ASC']);
+        return [
+            'subscriptions' => $subscriptions,
+            'days' => $visitDays
+        ];
+    }
 }

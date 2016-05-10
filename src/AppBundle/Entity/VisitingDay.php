@@ -30,6 +30,7 @@ class VisitingDay
 
     /**
      * @ORM\OneToMany(targetEntity="VisitDayHour", mappedBy="visitDay")
+     * @ORM\OrderBy({"time" = "ASC"})
      */
     private $visitDayHours;
 
