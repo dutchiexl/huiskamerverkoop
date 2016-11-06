@@ -28,7 +28,8 @@
         "sensio/framework-extra-bundle": "^3.0.2",
         "incenteev/composer-parameter-handler": "^2.0",
         "stof/doctrine-extensions-bundle": "^1.2",
-        "twig/extensions": "^1.3"
+        "twig/extensions": "^1.3",
+        "newerton/feedback-html2canvas": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
