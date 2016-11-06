@@ -5,17 +5,19 @@
 
     <table>
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Day</th>
-                <th>Actions</th>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <th>Day</th>
+            <th>Deleted</th>
+            <th>Actions</th>
+        </tr>
         </thead>
         <tbody>
         {% for visitingDay in visitingDays %}
             <tr>
                 <td><a href="{{ path('visitingday_show', { 'id': visitingDay.id }) }}">{{ visitingDay.id }}</a></td>
                 <td>{% if visitingDay.day %}{{ visitingDay.day|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ visitingDay.deleted }}</td>
                 <td>
                     <ul>
                         <li>
