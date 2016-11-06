@@ -58,7 +58,7 @@ class SubscribeForm extends AbstractType
                 'mapped' => false,
                 'expanded' => true,
                 'query_builder' => function (EntityRepository $er) {
-                    $er->findAll();
+                    $er->findBy(['deleted' => false]);
                 },
             ])
             ->add('visit', \AppBundle\Form\Type\EntityHiddenType::class,[

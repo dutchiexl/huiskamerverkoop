@@ -29,6 +29,13 @@ class VisitingDay
     private $day;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="deleted", type="boolean")
+     */
+    private $deleted = 0;
+
+    /**
      * @ORM\OneToMany(targetEntity="VisitDayHour", mappedBy="visitDay")
      * @ORM\OrderBy({"time" = "ASC"})
      */
@@ -89,6 +96,22 @@ class VisitingDay
     public function setVisitDayHours($visitDayHours)
     {
         $this->visitDayHours = $visitDayHours;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDeleted()
+    {
+        return $this->deleted;
+    }
+
+    /**
+     * @param mixed $deleted
+     */
+    public function setDeleted($deleted)
+    {
+        $this->deleted = $deleted;
     }
     //</editor-fold>
 }

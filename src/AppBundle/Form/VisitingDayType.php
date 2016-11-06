@@ -17,7 +17,8 @@ class VisitingDayType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('day', DateType::class);
+            ->add('day', DateType::class)
+            ->add('deleted');
     }
 
     /**
